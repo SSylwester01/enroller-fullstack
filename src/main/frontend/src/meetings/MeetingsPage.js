@@ -12,6 +12,8 @@ export default function MeetingsPage({username}) {
       body: JSON.stringify(meeting),
       headers: { 'Content-Type': 'application/json' }
   });
+
+
   if (response.ok) {
       const nextMeetings = [...meetings, meeting];
       setMeetings(nextMeetings);
