@@ -33,7 +33,8 @@ export default function MeetingsPage({username}) {
 
 
   if (response.ok) {
-      const nextMeetings = [...meetings, meeting];
+  const newMeeting=await response.json();
+      const nextMeetings = [...meetings, newMeeting];
       setMeetings(nextMeetings);
       setAddingNewMeeting(false);
   }
@@ -49,7 +50,7 @@ async function handleDeleteMeeting(meeting) {
         method: 'DELETE',
     });
     if (response.ok) {
-        const nextMeetings = meetings.filter(m => m !== meeting);
+        const nextMeetings = meetings.filter(m => m.id !== meeting.id);
         setMeetings(nextMeetings);
     }
 }
